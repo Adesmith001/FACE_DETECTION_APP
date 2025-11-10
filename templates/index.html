@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emotion Detection App</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #1c1c1c, #333);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      color: #00ff99;
+      text-shadow: 0 0 10px #00ff99;
+    }
+
+    img {
+      border: 3px solid #00ff99;
+      border-radius: 15px;
+      width: 70%;
+      max-width: 600px;
+      box-shadow: 0 0 30px rgba(0, 255, 153, 0.5);
+    }
+
+    #emotion-box {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 1.2em;
+      background-color: rgba(0, 0, 0, 0.5);
+      border: 2px solid #00ff99;
+      box-shadow: 0 0 20px rgba(0, 255, 153, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <h1>🎭 Emotion Detection</h1>
+  <img src="{{ url_for('video_feed') }}" alt="Emotion Detection Feed">
+  <div id="emotion-box">Detecting your mood...</div>
+
+  <script>
+  </script>
+</body>
+</html>

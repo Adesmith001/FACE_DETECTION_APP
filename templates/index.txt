@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emotion Detection App</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #1c1c1c, #333);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      color: #00ff99;
+      text-shadow: 0 0 10px #00ff99;
+    }
+
+    video {
+      border: 3px solid #00ff99;
+      border-radius: 15px;
+      width: 70%;
+      max-width: 600px;
+      box-shadow: 0 0 30px rgba(0, 255, 153, 0.5);
+    }
+
+    #emotion-box {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 1.2em;
+      background-color: rgba(0, 0, 0, 0.5);
+      border: 2px solid #00ff99;
+      box-shadow: 0 0 20px rgba(0, 255, 153, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    #emotion-box.detected {
+      background-color: rgba(0, 255, 153, 0.2);
+    }
+
+    button {
+      margin-top: 25px;
+      background-color: #00ff99;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      color: #1c1c1c;
+      transition: all 0.3s ease;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #00cc77;
+      box-shadow: 0 0 10px #00ff99;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <h1>🎭 Emotion Detection</h1>
+  <video id="webcam" autoplay playsinline></video>
+  <div id="emotion-box">Waiting for detection...</div>
+  <button id="start-btn">Start Camera</button>
+
+  <script>
+    const video = document.getElementById('webcam');
+    const startBtn = document.getElementById('start-btn');
+    const emotionBox = document.getElementById('emotion-box');
+
+    startBtn.addEventListener('click', async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+        emotionBox.textContent = "Camera started... detecting mood!";
+        emotionBox.classList.add('detected');
+      } catch (error) {
+        emotionBox.textContent = "Error accessing webcam 😔";
+        emotionBox.style.color = "red";
+      }
+    });
+  </script>
+</body>
+</html>
